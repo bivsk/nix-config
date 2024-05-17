@@ -18,7 +18,7 @@
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     rofi-wayland
-
+    neovim
     #fastfetch
     nnn
 
@@ -171,6 +171,8 @@
       line_break.disabled = true;
     };
   };
+
+  programs.firefox.enable = true;
 
   # alacritty - a cross-platform, GPU-accelerated terminal emulator
   programs.alacritty = {

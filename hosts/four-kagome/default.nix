@@ -23,10 +23,27 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
+    git
+
+    # Archives
+    p7zip
+    unzipNLS
+    xz
+    zip
+    zstd
+
+    # Text processing
+    gawk
+    gnugrep
+    gnused
+    jq
+
+    # Net
+    aria2
     curl
+    nmap
+    socat
     wget
   ];
 

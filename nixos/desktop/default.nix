@@ -9,6 +9,7 @@
     cpuFreqGovernor = lib.mkDefault "powersave";
   };
   services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
   services.auto-cpufreq = {
     enable = true;
     settings = {

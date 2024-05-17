@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # Enable networking
   networking.networkmanager.enable = true;
   services.resolved.enable = true; # req. by mullvad

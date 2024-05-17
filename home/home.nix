@@ -18,7 +18,7 @@
   home.packages = with pkgs; [
     rofi-wayland
     neovim
-    #fastfetch
+    fastfetch
     nnn
 
     # archives
@@ -49,7 +49,7 @@
     btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
-    #nvtop
+    nvtop
 
     # system tools
     sysstat

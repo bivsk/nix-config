@@ -11,7 +11,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./common
+    ../../nixos/common
   ];
 
   boot.initrd.luks.devices."luks-5fd805ab-c1dd-4ab7-8e47-c029d4e30996".device = "/dev/disk/by-uuid/5fd805ab-c1dd-4ab7-8e47-c029d4e30996";

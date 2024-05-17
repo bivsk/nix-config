@@ -1,15 +1,25 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  programs.home-manager.enable = true;
+
   home.username = "four";
   home.homeDirectory = "/home/four";
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-
     rofi-wayland
 
-    fastfetch
+    #fastfetch
     nnn
 
     # archives
@@ -37,10 +47,10 @@
 
     nix-output-monitor
 
-    btop  # replacement of htop/nmon
+    btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
-    nvtop
+    #nvtop
 
     # system tools
     sysstat
@@ -57,21 +67,21 @@
 
       input = {
         kb_layout = "us";
-	kb_options = "ctrl:nocaps";
-	numlock_by_default = true;
-	repeat_rate = 30;
-	repeat_delay = 350;
-	touchpad = {
-	  natural_scroll = true;
-	};
+        kb_options = "ctrl:nocaps";
+        numlock_by_default = true;
+        repeat_rate = 30;
+        repeat_delay = 350;
+        touchpad = {
+          natural_scroll = true;
+        };
       };
 
       general = {
         border_size = 2;
-	no_border_on_floating = false;
-	gaps_in = 5;
-	gaps_out = 10;
-	cursor_inactive_timeout = 5;
+        no_border_on_floating = false;
+        gaps_in = 5;
+        gaps_out = 10;
+        cursor_inactive_timeout = 5;
       };
 
       decoration = {
@@ -98,7 +108,7 @@
 
       # Binds
       "$mod" = "SUPER";
-      bind = 
+      bind =
         [
           "$mod SHIFT, return, exec, alacritty"
           "$mod SHIFT, C, killactive"
@@ -123,9 +133,9 @@
                 "$mod, ${ws}, workspace, ${toString (x + 1)}"
                 "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
               ]
-          )
-          10)
-      );
+            )
+            10)
+        );
 
       # move/resize windows using mouse
       bindm = [
@@ -193,7 +203,4 @@
   # the home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "23.11";
-
-  # Let home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }

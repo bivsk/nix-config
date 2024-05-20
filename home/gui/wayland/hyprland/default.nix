@@ -55,7 +55,6 @@
           "$mod, F, fullscreen"
           "$mod SHIFT, F, fakefullscreen"
           "$mod, space, togglefloating"
-          "$mod, F, exec, firefox"
           "$mod, P, exec, rofi -show drun"
           ", Print, exec, grimblast copy area"
         ]

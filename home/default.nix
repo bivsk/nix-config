@@ -5,7 +5,7 @@
 }: {
   imports = [
     ./easyeffects.nix
-    ./gui
+    ./core
   ];
 
   nixpkgs = {
@@ -17,7 +17,6 @@
   programs.home-manager.enable = true;
 
   home.username = "four";
-  home.homeDirectory = "/home/four";
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -64,12 +63,6 @@
     pciutils
     usbutils
   ];
-
-  programs.git = {
-    enable = true;
-    userName = "bivsk";
-    userEmail = "bivsk@tutanota.com";
-  };
 
   programs.starship = {
     enable = true;

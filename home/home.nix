@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./easyeffects.nix
+  ];
+
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -46,17 +50,18 @@
 
     nix-output-monitor
 
-    btop # replacement of htop/nmon
-    iotop # io monitoring
-    iftop # network monitoring
+    htop
+    btop
+    iotop
+    iftop
     nvtop
 
     # system tools
     sysstat
-    lm_sensors # for `sensors` command
+    lm_sensors
     ethtool
-    pciutils # lspci
-    usbutils # lsusb
+    pciutils
+    usbutils
   ];
 
   wayland.windowManager.hyprland = {
@@ -152,14 +157,12 @@
     };
   };
 
-  # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
     userName = "bivsk";
     userEmail = "bivsk@tutanota.com";
   };
 
-  # starship - an customizable prompt for any shell
   programs.starship = {
     enable = true;
     # custom settings
@@ -173,10 +176,8 @@
 
   programs.firefox.enable = true;
 
-  # alacritty - a cross-platform, GPU-accelerated terminal emulator
   programs.alacritty = {
     enable = true;
-    # custom settings
     settings = {
       env.TERM = "xterm-256color";
       font = {

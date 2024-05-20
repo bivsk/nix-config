@@ -2,6 +2,7 @@
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
+  programs.dconf.enable = true; # required by easyeffects daemon
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

@@ -7,6 +7,7 @@
     cache = config.xdg.cacheHome;
   in rec {
     imports = [
+      ./shells
       ./git.nix
     ];
 

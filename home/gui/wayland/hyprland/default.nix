@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      monitor = ",preferred,auto,1.5";
+      monitor = ",preferred,auto,1.56667";
 
       input = {
         kb_layout = "us";
@@ -20,7 +20,6 @@
         no_border_on_floating = false;
         gaps_in = 5;
         gaps_out = 10;
-        cursor_inactive_timeout = 5;
       };
 
       decoration = {

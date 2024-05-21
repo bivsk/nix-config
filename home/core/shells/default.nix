@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # archives
     zip
@@ -73,7 +72,7 @@
       enable = true;
       config = {
         pager = "less -FR";
-	#theme = "";
+        #theme = "";
       };
     };
   };

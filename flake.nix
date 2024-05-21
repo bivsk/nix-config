@@ -2,7 +2,8 @@
   description = "NixOS Configurations";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
@@ -48,7 +49,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home
-	  ./home/gui
+          ./home/gui
         ];
       };
     };

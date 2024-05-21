@@ -11,7 +11,7 @@
     btop
     iotop
     iftop
-    nvtop
+    nvtopPackages.amd
     sysstat
     lm_sensors
     ethtool

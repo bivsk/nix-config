@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./easyeffects.nix
     ./core
   ];
 

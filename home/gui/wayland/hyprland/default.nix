@@ -4,8 +4,12 @@
   ];
 
   home.packages = with pkgs; [
+    # hypr
     hyprpaper
     hyprpicker
+
+    # wayland tools
+    brightnessctl
   ];
 
   services = {

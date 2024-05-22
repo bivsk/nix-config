@@ -51,7 +51,7 @@
         modules = [
           ./home
           ./home/gui
-	  ./home/tui
+          ./home/tui
         ];
       };
     };

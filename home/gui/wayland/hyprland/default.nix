@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./hyprland.nix
   ];
@@ -14,12 +13,12 @@
       enable = true;
       settings = {
         ipc = "on";
-	splash = false;
-	splash_offset = 2.0;
+        splash = false;
+        splash_offset = 2.0;
 
-	preload = [ "/home/four/.wallpaper.jpg" ];
+        preload = ["/home/four/.wallpaper.jpg"];
 
-	wallpaper = [ "eDP-1,/home/four/.wallpaper.jpg" ];
+        wallpaper = ["eDP-1,/home/four/.wallpaper.jpg"];
       };
     };
   };

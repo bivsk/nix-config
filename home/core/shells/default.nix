@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  # core shell utils
   home.packages = with pkgs; [
     # archives
     zip
@@ -7,15 +8,15 @@
     p7zip
 
     # system monitoring
-    htop
     btop
+    ethtool
+    htop
     iotop
     iftop
-    nvtopPackages.amd
-    sysstat
     lm_sensors
-    ethtool
+    nvtopPackages.amd
     pciutils
+    sysstat
     usbutils
 
     # nix
@@ -27,13 +28,13 @@
     nix-tree # TUI to visualize dependency graph of a nix derivation
 
     # utils
-    ripgrep
-    jq
     eza
-    fd
-    fzf
     duf
     du-dust
+    fd
+    fzf
+    jq
+    ripgrep
 
     # misc
     cowsay
@@ -43,9 +44,9 @@
     gnupg
     gnused
     gnutar
+    nitch
     tree
     which
-    zstd
   ];
 
   programs = {

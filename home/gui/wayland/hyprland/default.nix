@@ -37,7 +37,7 @@ in {
 	  # dim screen...
           {
             timeout = 600; # 10min
-            on-timeout = "${brillo} -O; ${brillo} -u 1000000 -S 4";
+            on-timeout = "${brillo} -O; ${brillo} -u 1000000 -S 0.3";
             on-resume = "${brillo} -I -u 500000";
           }
           # ..then lock and suspend

@@ -12,6 +12,9 @@
     # social
     vesktop
     telegram-desktop
+
+    # misc
+    libnotify
   ];
 
   programs = {

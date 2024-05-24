@@ -1,7 +1,10 @@
 {lib, ...}: {
   imports = [
     ./sound.nix
+    ./backlight.nix
   ];
+
+  security.pam.services.hyprlock.text = "auth include login";
 
   # Power management
   powerManagement = {

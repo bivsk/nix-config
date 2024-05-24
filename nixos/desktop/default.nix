@@ -2,6 +2,7 @@
   imports = [
     ./sound.nix
     ./backlight.nix
+    ./bluetooth.nix
   ];
 
   security.pam.services.hyprlock.text = "auth include login";

@@ -4,7 +4,10 @@
     settings = {
       env.TERM = "xterm-256color";
       font = {
-        size = 12;
+        normal.family = "JetBrains Mono";
+        bold.family = "JetBrains Mono";
+        italic.family = "JetBrains Mono";
+        size = 10;
       };
       mouse.hide_when_typing = true;
       scrolling.multiplier = 5;

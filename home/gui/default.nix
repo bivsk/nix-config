@@ -3,7 +3,6 @@
     ./audio.nix
     ./terminal
     ./wayland
-    ./fonts.nix
   ];
 
   home.packages = with pkgs; [

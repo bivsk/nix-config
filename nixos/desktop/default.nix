@@ -3,6 +3,7 @@
     ./sound.nix
     ./backlight.nix
     ./bluetooth.nix
+    ./fonts.nix
   ];
 
   security.pam.services.hyprlock.text = "auth include login";

@@ -1,10 +1,9 @@
 {
-  lib, 
+  lib,
   pkgs,
   ...
 }: {
   boot = {
-
     initrd = {
       systemd.enable = true;
       supportedFilesystems = ["ext4"];
@@ -30,6 +29,9 @@
       };
     };
 
-    plymouth.enable = true;
+    plymouth = {
+      enable = true;
+      theme = "breeze";
+    };
   };
 }

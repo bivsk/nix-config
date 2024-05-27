@@ -18,6 +18,37 @@
   boot.initrd.luks.devices."luks-5fd805ab-c1dd-4ab7-8e47-c029d4e30996".device = "/dev/disk/by-uuid/5fd805ab-c1dd-4ab7-8e47-c029d4e30996";
   networking.hostName = "kagome"; # Define your hostname.
 
+  hardware.cpu.amd.updateMicrocode = true;
+  hardware.enableRedistributableFirmware = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    extraPackages = [
+      pkgs.rocmPackages.clr.icd
+      pkgs.amdvlk
+      # encoding/decoding
+      pkgs.libvdpau-va-gl
+      pkgs.vaapiVdpau
+    ];
+    extraPackages32 = [
+      pkgs.driversi686Linux.amdvlk
+    ];
+  };
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.powertop.enable = true;
+  systemd.services.battery-limit.postStart = ''
+    ${pkgs.ectool}/bin/ectool fwchargelimit 85
+  '';
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+  services.fprintd.enable = true;
+
+  services.fwupd.enable = true;
+  services.fwupd.extraRemotes = [ "lvfs-testing" ];
+
   # Hyprland
   programs.hyprland = {
     enable = true;

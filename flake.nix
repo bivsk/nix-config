@@ -24,6 +24,7 @@
     self,
     nixpkgs,
     home-manager,
+    nixos-hardware,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -39,6 +40,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/four-kagome
+	  nixos-hardware.nixosModules.framework-13-7040-amd
         ];
       };
     };

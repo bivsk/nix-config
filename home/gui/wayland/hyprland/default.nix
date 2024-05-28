@@ -15,6 +15,7 @@
 in {
   imports = [
     ./hyprland.nix
+    ./waybar
   ];
 
   home.packages = with pkgs; [

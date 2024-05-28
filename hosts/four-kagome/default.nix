@@ -46,6 +46,7 @@
   services.blueman.enable = true;
   services.fprintd.enable = true;
 
+  services.fstrim.enable = true;
   services.fwupd.enable = true;
   services.fwupd.extraRemotes = [ "lvfs-testing" ];
 

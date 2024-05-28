@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   lib,
   ...
@@ -23,8 +24,12 @@ in {
     hyprpaper
     hyprpicker
 
+    inputs.hyprcursor-phinger.packages."x86_64-linux".hyprcursor-phinger
+
     # wayland tools
   ];
+
+  programs.hyprcursor-phinger.enable = true;
 
   services = {
     hypridle = {

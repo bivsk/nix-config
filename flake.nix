@@ -13,6 +13,7 @@
     };
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprcursor-phinger.url = "github:Jappie3/hyprcursor-phinger";
 
     framework-audio-presets = {
       url = "github:ceiphr/ee-framework-presets";
@@ -54,6 +55,7 @@
           ./home
           ./home/gui
           ./home/tui
+	  inputs.hyprcursor-phinger
         ];
       };
     };

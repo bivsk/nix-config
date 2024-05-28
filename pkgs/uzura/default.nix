@@ -5,7 +5,7 @@
 
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "uzura";
-  version = "1.21";
+  version = "1.00";
 
   src = fetchzip {
     url = "http://azukifont.com/font/uzurafont100.zip";

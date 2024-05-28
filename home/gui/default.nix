@@ -3,6 +3,7 @@
     ./audio.nix
     ./terminal
     ./wayland
+    ./polkit-agent.nix
   ];
 
   home.packages = with pkgs; [
@@ -33,6 +34,16 @@
       provider = "geoclue2";
       temperature.day = 5500;
       temperature.night = 3300;
+    };
+
+    kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
+
+    udiskie = {
+      enable = true;
+      tray = "auto"; # always, auto, never
     };
   };
 }

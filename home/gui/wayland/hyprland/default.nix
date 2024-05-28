@@ -1,93 +1,113 @@
 {
-  wayland.windowManager.hyprland = {
-    enable = true;
-    settings = {
-      monitor = ",preferred,auto,1.5";
+  pkgs,
+  lib,
+  ...
+}: let
+  suspendScript = pkgs.writeShellScript "suspend-script" ''
+    ${pkgs.pipewire}/bin/pw-cli i all 2>&1 | ${pkgs.ripgrep}/bin/rg running -q
+    # only suspend if audio isn't running
+    if [ $? == 1 ]; then
+      ${pkgs.systemd}/bin/systemctl suspend
+    fi
+  '';
 
-      input = {
-        kb_layout = "us";
-        kb_options = "ctrl:nocaps";
-        numlock_by_default = true;
-        repeat_rate = 30;
-        repeat_delay = 350;
-        touchpad = {
-          natural_scroll = true;
+  brillo = lib.getExe pkgs.brillo;
+in {
+  imports = [
+    ./hyprland.nix
+  ];
+
+  home.packages = with pkgs; [
+    # hypr
+    hyprpaper
+    hyprpicker
+
+    # wayland tools
+  ];
+
+  services = {
+    hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = lib.getExe pkgs.hyprlock;
+          before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
         };
+        listener = [
+          # dim screen...
+          {
+            timeout = 600; # 10min
+            on-timeout = "${brillo} -O; ${brillo} -u 1000000 -S 0.3";
+            on-resume = "${brillo} -I -u 500000";
+          }
+          # ..then lock and suspend
+          {
+            timeout = 900; # 15min
+            on-timeout = suspendScript.outPath;
+          }
+        ];
       };
+    };
 
-      general = {
-        border_size = 2;
-        no_border_on_floating = false;
-        gaps_in = 5;
-        gaps_out = 10;
-        cursor_inactive_timeout = 5;
+    hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = "on";
+        splash = false;
+        splash_offset = 2.0;
+
+        preload = ["/home/four/.wallpaper.jpg"];
+
+        wallpaper = ["eDP-1,/home/four/.wallpaper.jpg"];
       };
+    };
+  };
 
-      decoration = {
-        rounding = 5;
-        active_opacity = 1.0;
-        inactive_opacity = 1.0;
-        fullscreen_opacity = 1.0;
-        drop_shadow = true;
-        shadow_range = 4; # size
-        shadow_render_power = 3; # more power, faster the falloff [1-4]
-        dim_inactive = true;
-        dim_strength = 0.1;
-
-        blur = {
-          enabled = true;
-          size = 8;
-          passes = 3;
-          ignore_opacity = false;
-          new_optimizations = true;
-          xray = false; # dependent on above, decreases overhead
-          special = false; # expensive
+  programs = {
+    hyprlock = {
+      enable = true;
+      settings = {
+        general = {
+          disable_loading_bar = true;
+          hide_cursor = false;
+          no_fade_in = true;
         };
+        background = {
+          monitor = "";
+          path = "/home/four/.wallpaper.jpg";
+          blur_passes = 2;
+          blur_size = 4;
+        };
+        input-field = [
+          {
+            monitor = "eDP-1";
+            size = "300, 50";
+            outline_thickness = 1;
+
+            outer_color = "rgb(151515)";
+            inner_color = "rgb(200, 200, 200)";
+            font_color = "rgb(10, 10, 10)";
+
+            fade_on_empty = false;
+            placeholder_text = "> Password...";
+
+            dots_spacing = 0.2;
+            dots_center = true;
+          }
+        ];
+        label = [
+          {
+            monitor = "";
+
+            text = "$TIME";
+            font_size = 50;
+
+            position = "0, 80";
+            valign = "center";
+            halign = "center";
+          }
+        ];
       };
-
-      # Binds
-      "$mod" = "SUPER";
-      bind =
-        [
-          "$mod SHIFT, return, exec, alacritty"
-          "$mod SHIFT, C, killactive"
-          "$mod SHIFT, E, exit"
-          "$mod, F, fullscreen"
-          "$mod SHIFT, F, fakefullscreen"
-          "$mod, space, togglefloating"
-          "$mod, P, exec, rofi -show drun"
-          ", Print, exec, grimblast copy area"
-        ]
-        ++ (
-          # workspaces
-          # binds $mod + [shift +] {1..0} to [move to] workspace {1..10}
-          builtins.concatLists (builtins.genList (
-              x: let
-                ws = let
-                  c = (x + 1) / 10;
-                in
-                  builtins.toString (x + 1 - (c * 10));
-              in [
-                "$mod, ${ws}, workspace, ${toString (x + 1)}"
-                "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-              ]
-            )
-            10)
-        );
-
-      # move/resize windows using mouse
-      bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
-      # media keys
-      bindel = [
-        ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ];
-      bindl = [
-        ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      ];
     };
   };
 }

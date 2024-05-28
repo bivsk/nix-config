@@ -2,6 +2,7 @@
   description = "NixOS Configurations";
 
   inputs = {
+    # TODO: enable both stable and unstable nixpkgs throughout the config
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -23,6 +24,7 @@
     self,
     nixpkgs,
     home-manager,
+    nixos-hardware,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -38,6 +40,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/four-kagome
+	  nixos-hardware.nixosModules.framework-13-7040-amd
         ];
       };
     };
@@ -50,7 +53,7 @@
         modules = [
           ./home
           ./home/gui
-	  ./home/tui
+          ./home/tui
         ];
       };
     };

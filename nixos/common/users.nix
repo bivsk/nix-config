@@ -4,6 +4,6 @@
     home = "/home/four";
     uid = 1000;
     description = "Four";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "video" "wheel"];
   };
 }

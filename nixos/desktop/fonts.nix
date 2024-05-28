@@ -1,7 +1,14 @@
-{pkgs, ...}: {
+{inputs, pkgs, ...}: {
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
+      # personal fonts
+      inputs.self.packages.${system}.azuki
+      inputs.self.packages.${system}.uzura
+
+      # monaspace
+      monaspace
+
       # icons
       material-symbols
 

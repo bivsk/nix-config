@@ -52,7 +52,7 @@
     style = lib.concatStrings [''
       * {
         font-size: 12px;
-	font-family: Inter, Material Icons;
+	font-family: uzura_font, Material Icons;
 	min-height: 0;
       }
       window#waybar {

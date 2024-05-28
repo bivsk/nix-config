@@ -4,9 +4,9 @@
     settings = {
       env.TERM = "xterm-256color";
       font = {
-        normal.family = "JetBrains Mono";
-        bold.family = "JetBrains Mono";
-        italic.family = "JetBrains Mono";
+        normal.family = "Monaspace Argon";
+        bold.family = "Monaspace Argon";
+        italic.family = "Monaspace Argon";
         size = 10;
       };
       mouse.hide_when_typing = true;

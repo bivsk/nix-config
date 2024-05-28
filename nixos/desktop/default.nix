@@ -13,6 +13,7 @@
     enable = true;
     cpuFreqGovernor = lib.mkDefault "powersave";
   };
+  services.geoclue2.enable = true;
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
   services.auto-cpufreq = {

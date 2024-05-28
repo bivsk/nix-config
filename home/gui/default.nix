@@ -6,8 +6,11 @@
   ];
 
   home.packages = with pkgs; [
+    brave
+
     # media/gfx
     gimp
+    spotify
 
     # social
     vesktop
@@ -20,6 +23,16 @@
   programs = {
     mpv = {
       enable = true;
+    };
+  };
+
+  services = {
+    gammastep = {
+      enable = true;
+      tray = true;
+      provider = "geoclue2";
+      temperature.day = 5500;
+      temperature.night = 3300;
     };
   };
 }

@@ -7,7 +7,7 @@
         normal.family = "Monaspace Argon";
         bold.family = "Monaspace Argon";
         italic.family = "Monaspace Argon";
-        size = 10;
+        size = 12;
       };
       mouse.hide_when_typing = true;
       scrolling.multiplier = 5;

@@ -5,8 +5,7 @@
   ...
 }: let
   suspendScript = pkgs.writeShellScript "suspend-script" ''
-    ${pkgs.pipewire}/bin/pw-cli i all 2>&1 | ${pkgs.ripgrep}/bin/rg running -q
-    # only suspend if audio isn't running
+    ${pkgs.pipewire}/bin/pw-cli i all 2>&1 | ${pkgs.ripgrep}/bin/rg running -q # only suspend if audio isn't running
     if [ $? == 1 ]; then
       ${pkgs.systemd}/bin/systemctl suspend
     fi
@@ -17,6 +16,7 @@ in {
   imports = [
     ./hyprland.nix
     ./waybar
+    #inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
   ];
 
   home.packages = with pkgs; [
@@ -24,12 +24,11 @@ in {
     hyprpaper
     hyprpicker
 
-    inputs.hyprcursor-phinger.packages."x86_64-linux".hyprcursor-phinger
 
     # wayland tools
+    grim
+    slurp
   ];
-
-  programs.hyprcursor-phinger.enable = true;
 
   services = {
     hypridle = {
@@ -70,6 +69,7 @@ in {
   };
 
   programs = {
+    #hyprcursor-phinger.enable = true;
     hyprlock = {
       enable = true;
       settings = {

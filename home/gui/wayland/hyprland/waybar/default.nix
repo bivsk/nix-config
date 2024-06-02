@@ -9,7 +9,7 @@
       primary = {
         layer = "top";
 	position = "top";
-	height = 30;
+	height = 40;
 	spacing = 4;
 
 	modules-left = [ "image" "hyprland/workspaces" "hyprland/window" ];
@@ -51,13 +51,13 @@
 
     style = lib.concatStrings [''
       * {
-        font-size: 12px;
+        font-size: 16px;
 	font-family: uzura_font, Material Icons;
 	min-height: 0;
       }
       window#waybar {
 	background: #1E2326;
-	border: 2px solid #3C4841;
+	border: 0px solid #3C4841;
 	color: #D3C6AA;
         margin: 6px;
 	padding: 2px 8px;

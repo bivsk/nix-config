@@ -55,7 +55,6 @@
           ./home
           ./home/gui
           ./home/tui
-	  inputs.hyprcursor-phinger
         ];
       };
     };

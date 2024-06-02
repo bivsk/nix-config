@@ -1,5 +1,9 @@
 {lib, ...}: {
   imports = [
+    ./crypto.nix
+    ./laptop.nix
+    ./game.nix
+    ./network.nix
     ./sound.nix
     ./backlight.nix
     ./bluetooth.nix

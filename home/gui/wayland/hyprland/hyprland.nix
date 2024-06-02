@@ -1,12 +1,23 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = ''
-      exec-once = hyprpaper
-      exec-once = hypridle
-    '';
     settings = {
-      monitor = ",preferred,auto,1.56667";
+      env = [
+        "HYPRCURSOR_THEME,Bibata-Modern-Ice"
+	"HYPRCURSOR_SIZE,24"
+      ];
+
+      exec-once = [
+        "hyprpaper"
+	"hypridle"
+      ];
+
+      monitor = ",preferred,auto,1.333333";
+
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_forever = true;
+      };
 
       input = {
         kb_layout = "us";
@@ -46,6 +57,15 @@
           xray = false; # dependent on above, decreases overhead
           special = false; # expensive
         };
+      };
+
+      xwayland.force_zero_scaling = true;
+
+      misc = {
+        force_default_wallpaper = 0;
+	animate_mouse_windowdragging = false;
+	vrr = 1;
+	no_direct_scanout = false;
       };
 
       # Binds

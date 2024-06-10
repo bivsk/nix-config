@@ -2,10 +2,11 @@
   description = "NixOS Configurations";
 
   inputs = {
-    # TODO: enable both stable and unstable nixpkgs throughout the config
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     home-manager = {
       url = "github:nix-community/home-manager";

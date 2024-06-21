@@ -1,4 +1,5 @@
 {inputs, pkgs, ...}:{
+  hardware.xone.enable = true;
   programs = {
     steam = {
       enable = true;
